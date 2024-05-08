@@ -4,7 +4,7 @@ ARG user
 ARG uid
 
 # Set the working directory to /var/www/html
-#WORKDIR /var/www/html
+WORKDIR /var/www/html
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -21,11 +21,12 @@ RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
+RUN adduser -D -H -u 1000 -s /bin/bash -Gwww-data $user
+#RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
-WORKDIR /var/www/html
+# WORKDIR /var/www/html
 
 USER $user
 

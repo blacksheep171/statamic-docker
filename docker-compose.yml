@@ -21,7 +21,7 @@ services:
       - .:/var/www/html
       - "./env/php/php-fpm/php.conf:/usr/local/etc/php-fpm/php.conf"
     working_dir: /var/www/html
-    # entrypoint: [ "bash", "-c", "/start.sh"]
+    #entrypoint: [ "bash", "-c", "/start.sh"]
     depends_on:
      - mysql
     links: 
@@ -38,6 +38,7 @@ services:
      - "3360:3006"
     volumes:
      - ./mysql:/var/lib/mysql
+     - "./backups/init:/docker-entrypoint-initdb.d"
     networks:
      - terrace
   phpmyadmin:
