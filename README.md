@@ -1,40 +1,74 @@
-<p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo+Wordmark-Rad.svg" width="400" alt="Statamic Logo" /></p>
+# Setup Docker Statamic Project
+[About Statamic, see the documetation!](https://statamic.dev/)
 
-## About Statamic
+# Docker Image Requires
+Requires Image:
+- PHP >=8.1
+- Nginx
+- Mysql/MariaDB
+- Elasticsearch
+- Redis Server
+- PHPMyAdmin
 
-Statamic is the flat-first, Laravel + Git powered CMS designed for building beautiful, easy to manage websites.
+### Usage
+Clone Repository
+```sh
+git clone https://github.com/statamic/cms.git
+```
 
-> **Note:** This repository contains the code for the Statamic application. To contribute to the core package, visit the [Statamic core package repository][cms-repo].
+Copy **.env.example** to **.env**
+```sh
+cp .env.example .env
+```
+
+Configuration variables in **.env**
+```
+APP_NAME="docker-statamic"
+APP_URL=http://local-terrace.com
+
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=statamic
+DB_USERNAME=root
+DB_PASSWORD=root
+
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis
+
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+```
 
 
-## Learning Statamic
-
-Statamic has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
-
-## Support
-
-We provide official developer support on [Statamic Pro](https://statamic.com/pricing) projects. Community-driven support is available on the [forum](https://statamic.com/forum) and in [Discord][discord].
+To build and run the containers for application
+```sh
+docker-compose up -d
+```
 
 
-## Contributing
-
-Thank you for considering contributing to Statamic! We simply ask that you review the [contribution guide][contribution] before you open issues or send pull requests.
-
-
-## Code of Conduct
-
-In order to ensure that the Statamic community is welcoming to all and generally a rad place to belong, please review and abide by the [Code of Conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
+Access container
+```sh
+docker-compose exec php bash
+```
 
 
-## Important Links
+Install dependencies via composer
+```sh
+composer install
+```
 
-- [Statamic Main Site](https://statamic.com)
-- [Statamic Documentation][docs]
-- [Statamic Core Package Repo][cms-repo]
-- [Statamic Migrator](https://github.com/statamic/migrator)
-- [Statamic Discord][discord]
+Generate new key for project
+```sh
+php artisan key:generate
+```
 
-[docs]: https://statamic.dev/
-[discord]: https://statamic.com/discord
-[contribution]: https://github.com/statamic/cms/blob/master/CONTRIBUTING.md
-[cms-repo]: https://github.com/statamic/cms
+Access host
+[http://local-terrace.com](http://local-terrace.com/cp/auth/login)
+
+Generate new user to login the dashboard
+```sh
+php please make:user
+```
