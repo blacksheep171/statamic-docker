@@ -25,9 +25,10 @@ services:
     tty: true
     volumes:
       - .:/var/www
-      - ./env/php/php-fpm.d/custom.ini:/usr/local/etc/php-fpm.d/custom.ini
+      - ./env/php/php-fpm.d/:/usr/local/etc/php-fpm.d/
       - "./env/php/custom.ini:/usr/local/etc/php/custom.ini"
     working_dir: /var/www
+    # entrypoint: [ "bash", "-c", "/start.sh"]
     expose:
       - 9000
     # depends_on:
@@ -46,12 +47,38 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
     ports:
      - "3360:3006"
-    #user: mysql
     volumes:
      - ./mysql:/var/lib/mysql
      - "./backups/init:/docker-entrypoint-initdb.d"
     networks:
      - terrace
+  elasticsearch:
+    image: elasticsearch:7.17.8
+    container_name: terrace-elasticsearch
+    # environment:
+    #   - xpack.security.enabled=false
+    #   - discovery.type=single-node
+    env_file:
+      - ./env/elasticsearch.env
+    volumes:
+      - ./env/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - terrace
+  redis:
+    image: redis:6.2
+    # build: ./env/redis
+    container_name: terrace-redis
+    tty: true
+    ports:
+      - "6378:6379"
+    volumes:
+      # - ./env/redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/data:/data
+    networks:
+      - terrace
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: terrace-phpmyadmin
