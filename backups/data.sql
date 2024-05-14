@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: mysql:3306
--- Thời gian đã tạo: Th5 14, 2024 lúc 07:59 AM
+-- Thời gian đã tạo: Th5 14, 2024 lúc 09:29 AM
 -- Phiên bản máy phục vụ: 8.4.0
 -- Phiên bản PHP: 8.0.27
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Cấu trúc bảng cho bảng `assets_meta`
 --
 
+DROP TABLE IF EXISTS `assets_meta`;
 CREATE TABLE `assets_meta` (
   `id` bigint UNSIGNED NOT NULL,
   `container` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -46,6 +47,7 @@ CREATE TABLE `assets_meta` (
 -- Cấu trúc bảng cho bảng `asset_containers`
 --
 
+DROP TABLE IF EXISTS `asset_containers`;
 CREATE TABLE `asset_containers` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -69,6 +71,7 @@ INSERT INTO `asset_containers` (`id`, `handle`, `title`, `disk`, `settings`, `cr
 -- Cấu trúc bảng cho bảng `blueprints`
 --
 
+DROP TABLE IF EXISTS `blueprints`;
 CREATE TABLE `blueprints` (
   `id` bigint UNSIGNED NOT NULL,
   `namespace` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -91,7 +94,8 @@ INSERT INTO `blueprints` (`id`, `namespace`, `handle`, `data`, `created_at`, `up
 (7, 'collections.documents', 'document', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"text\", \"required\": true, \"validate\": [\"required\"]}, \"handle\": \"title\"}, {\"field\": {\"type\": \"markdown\", \"display\": \"Content\", \"localizable\": true}, \"handle\": \"content\"}, {\"field\": {\"mode\": \"select\", \"type\": \"users\", \"default\": [1], \"display\": \"User\", \"listable\": \"hidden\", \"validate\": [\"required\"], \"max_items\": 1, \"visibility\": \"visible\", \"hide_display\": false, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"user\"}], \"__count\": 0}]}, \"sidebar\": {\"__count\": 1, \"display\": \"Sidebar\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"slug\", \"validate\": \"max:200\", \"localizable\": true}, \"handle\": \"slug\"}], \"__count\": 0}]}}, \"title\": \"Document\"}', '2024-05-14 04:58:50', '2024-05-14 04:58:50'),
 (8, 'collections.comments', 'comment', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"text\", \"required\": true, \"validate\": [\"required\"]}, \"handle\": \"title\"}, {\"field\": {\"type\": \"markdown\", \"display\": \"Content\", \"localizable\": true}, \"handle\": \"content\"}, {\"field\": {\"mode\": \"select\", \"type\": \"users\", \"default\": [1], \"display\": \"Author\", \"listable\": \"hidden\", \"validate\": [\"required\"], \"max_items\": 1, \"visibility\": \"visible\", \"hide_display\": false, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"author\"}, {\"field\": {\"mode\": \"select\", \"type\": \"entries\", \"create\": true, \"display\": \"Post\", \"listable\": \"hidden\", \"validate\": [\"required\"], \"max_items\": 1, \"visibility\": \"visible\", \"collections\": [\"post\"], \"hide_display\": false, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"post\"}], \"__count\": 0}]}, \"sidebar\": {\"__count\": 1, \"display\": \"Sidebar\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"slug\", \"validate\": \"max:200\", \"localizable\": true}, \"handle\": \"slug\"}], \"__count\": 0}]}}, \"title\": \"Comment\"}', '2024-05-14 05:00:08', '2024-05-14 05:00:08'),
 (9, 'collections.postcategory', 'postcategory', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"text\", \"required\": true}, \"handle\": \"title\"}, {\"field\": {\"type\": \"text\", \"antlers\": true, \"display\": \"Name\", \"listable\": \"hidden\", \"input_type\": \"text\", \"visibility\": \"visible\", \"hide_display\": false, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"name\"}, {\"field\": {\"type\": \"textarea\", \"antlers\": true, \"display\": \"Description\", \"listable\": \"hidden\", \"visibility\": \"visible\", \"hide_display\": false, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"description\"}], \"__count\": 0}]}, \"sidebar\": {\"__count\": 1, \"display\": \"Sidebar\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"slug\", \"validate\": \"max:200\", \"localizable\": true}, \"handle\": \"slug\"}], \"__count\": 0}]}}, \"title\": \"PostCategory\"}', '2024-05-14 07:17:50', '2024-05-14 07:17:50'),
-(10, 'collections.advertisement', 'advertisement', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"text\", \"antlers\": true, \"listable\": \"hidden\", \"required\": true, \"validate\": [\"required\"], \"input_type\": \"text\", \"visibility\": \"visible\", \"hide_display\": false, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"title\"}, {\"field\": {\"type\": \"markdown\", \"antlers\": true, \"buttons\": [\"bold\", \"italic\", \"unorderedlist\", \"orderedlist\", \"quote\", \"link\", \"image\", \"table\"], \"display\": \"Content\", \"listable\": \"hidden\", \"restrict\": false, \"visibility\": \"visible\", \"localizable\": true, \"smartypants\": false, \"hide_display\": false, \"escape_markup\": false, \"automatic_links\": false, \"heading_anchors\": false, \"table_of_contents\": false, \"replicator_preview\": true, \"automatic_line_breaks\": true, \"instructions_position\": \"above\"}, \"handle\": \"content\"}, {\"field\": {\"mode\": \"list\", \"type\": \"assets\", \"display\": \"Media\", \"listable\": \"hidden\", \"restrict\": false, \"container\": \"documents\", \"visibility\": \"visible\", \"hide_display\": false, \"show_set_alt\": true, \"allow_uploads\": true, \"show_filename\": true, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"media\"}], \"__count\": 0}]}, \"sidebar\": {\"__count\": 1, \"display\": \"Sidebar\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"slug\", \"validate\": \"max:200\", \"localizable\": true}, \"handle\": \"slug\"}], \"__count\": 0}]}}, \"title\": \"Advertisement\"}', '2024-05-14 07:43:03', '2024-05-14 07:48:26');
+(10, 'collections.advertisement', 'advertisement', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"text\", \"antlers\": true, \"listable\": \"hidden\", \"required\": true, \"validate\": [\"required\"], \"input_type\": \"text\", \"visibility\": \"visible\", \"hide_display\": false, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"title\"}, {\"field\": {\"type\": \"markdown\", \"antlers\": true, \"buttons\": [\"bold\", \"italic\", \"unorderedlist\", \"orderedlist\", \"quote\", \"link\", \"image\", \"table\"], \"display\": \"Content\", \"listable\": \"hidden\", \"restrict\": false, \"visibility\": \"visible\", \"localizable\": true, \"smartypants\": false, \"hide_display\": false, \"escape_markup\": false, \"automatic_links\": false, \"heading_anchors\": false, \"table_of_contents\": false, \"replicator_preview\": true, \"automatic_line_breaks\": true, \"instructions_position\": \"above\"}, \"handle\": \"content\"}, {\"field\": {\"mode\": \"list\", \"type\": \"assets\", \"display\": \"Media\", \"listable\": \"hidden\", \"restrict\": false, \"container\": \"documents\", \"visibility\": \"visible\", \"hide_display\": false, \"show_set_alt\": true, \"allow_uploads\": true, \"show_filename\": true, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"media\"}], \"__count\": 0}]}, \"sidebar\": {\"__count\": 1, \"display\": \"Sidebar\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"slug\", \"validate\": \"max:200\", \"localizable\": true}, \"handle\": \"slug\"}], \"__count\": 0}]}}, \"title\": \"Advertisement\"}', '2024-05-14 07:43:03', '2024-05-14 07:48:26'),
+(11, 'collections.pages', 'page', '{\"tabs\": {\"main\": {\"__count\": 0, \"display\": \"Main\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"text\", \"required\": true, \"validate\": [\"required\"]}, \"handle\": \"title\"}, {\"field\": {\"type\": \"markdown\", \"display\": \"Content\", \"localizable\": true}, \"handle\": \"content\"}, {\"field\": {\"mode\": \"select\", \"type\": \"users\", \"display\": \"Author\", \"listable\": \"hidden\", \"validate\": [\"required\"], \"visibility\": \"visible\", \"hide_display\": false, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"author\"}, {\"field\": {\"mode\": \"list\", \"type\": \"assets\", \"display\": \"Image\", \"listable\": \"hidden\", \"restrict\": false, \"container\": \"documents\", \"visibility\": \"visible\", \"hide_display\": false, \"show_set_alt\": true, \"allow_uploads\": true, \"show_filename\": true, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"image\"}, {\"field\": {\"type\": \"template\", \"display\": \"Template\", \"listable\": \"hidden\", \"blueprint\": false, \"visibility\": \"visible\", \"hide_display\": false, \"hide_partials\": true, \"replicator_preview\": true, \"instructions_position\": \"above\"}, \"handle\": \"template\"}], \"__count\": 0}]}, \"sidebar\": {\"__count\": 1, \"display\": \"Sidebar\", \"sections\": [{\"fields\": [{\"field\": {\"type\": \"slug\", \"validate\": \"max:200\", \"localizable\": true}, \"handle\": \"slug\"}], \"__count\": 0}]}}, \"title\": \"Page\"}', '2024-05-14 08:03:17', '2024-05-14 08:03:28');
 
 -- --------------------------------------------------------
 
@@ -99,6 +103,7 @@ INSERT INTO `blueprints` (`id`, `namespace`, `handle`, `data`, `created_at`, `up
 -- Cấu trúc bảng cho bảng `collections`
 --
 
+DROP TABLE IF EXISTS `collections`;
 CREATE TABLE `collections` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -120,7 +125,8 @@ INSERT INTO `collections` (`id`, `handle`, `title`, `settings`, `created_at`, `u
 (6, 'documents', 'Documents', '{\"dated\": false, \"mount\": null, \"sites\": null, \"slugs\": true, \"inject\": [], \"layout\": null, \"routes\": [], \"sort_dir\": null, \"template\": null, \"propagate\": false, \"revisions\": false, \"structure\": null, \"sort_field\": null, \"taxonomies\": [], \"search_index\": null, \"title_formats\": [], \"default_status\": true, \"origin_behavior\": \"select\", \"preview_targets\": [{\"label\": \"Entry\", \"format\": \"{permalink}\", \"refresh\": true}], \"past_date_behavior\": \"public\", \"future_date_behavior\": \"private\"}', '2024-05-14 04:57:42', '2024-05-14 04:57:42'),
 (7, 'comments', 'Comments', '{\"dated\": false, \"mount\": null, \"sites\": null, \"slugs\": true, \"inject\": [], \"layout\": null, \"routes\": [], \"sort_dir\": null, \"template\": null, \"propagate\": false, \"revisions\": false, \"structure\": null, \"sort_field\": null, \"taxonomies\": [], \"search_index\": null, \"title_formats\": [], \"default_status\": true, \"origin_behavior\": \"select\", \"preview_targets\": [{\"label\": \"Entry\", \"format\": \"{permalink}\", \"refresh\": true}], \"past_date_behavior\": \"public\", \"future_date_behavior\": \"private\"}', '2024-05-14 04:59:01', '2024-05-14 04:59:01'),
 (8, 'postcategory', 'PostCategory', '{\"dated\": false, \"mount\": null, \"sites\": null, \"slugs\": true, \"inject\": [], \"layout\": null, \"routes\": [], \"sort_dir\": null, \"template\": null, \"propagate\": false, \"revisions\": false, \"structure\": null, \"sort_field\": null, \"taxonomies\": [], \"search_index\": null, \"title_formats\": [], \"default_status\": true, \"origin_behavior\": \"select\", \"preview_targets\": [{\"label\": \"Entry\", \"format\": \"{permalink}\", \"refresh\": true}], \"past_date_behavior\": \"public\", \"future_date_behavior\": \"private\"}', '2024-05-14 07:13:41', '2024-05-14 07:13:41'),
-(9, 'advertisement', 'Advertisement', '{\"dated\": false, \"mount\": null, \"sites\": null, \"slugs\": true, \"inject\": [], \"layout\": null, \"routes\": [], \"sort_dir\": null, \"template\": null, \"propagate\": false, \"revisions\": false, \"structure\": null, \"sort_field\": null, \"taxonomies\": [], \"search_index\": null, \"title_formats\": [], \"default_status\": true, \"origin_behavior\": \"select\", \"preview_targets\": [{\"label\": \"Entry\", \"format\": \"{permalink}\", \"refresh\": true}], \"past_date_behavior\": \"public\", \"future_date_behavior\": \"private\"}', '2024-05-14 07:41:04', '2024-05-14 07:41:04');
+(9, 'advertisement', 'Advertisement', '{\"dated\": false, \"mount\": null, \"sites\": null, \"slugs\": true, \"inject\": [], \"layout\": null, \"routes\": [], \"sort_dir\": null, \"template\": null, \"propagate\": false, \"revisions\": false, \"structure\": null, \"sort_field\": null, \"taxonomies\": [], \"search_index\": null, \"title_formats\": [], \"default_status\": true, \"origin_behavior\": \"select\", \"preview_targets\": [{\"label\": \"Entry\", \"format\": \"{permalink}\", \"refresh\": true}], \"past_date_behavior\": \"public\", \"future_date_behavior\": \"private\"}', '2024-05-14 07:41:04', '2024-05-14 07:41:04'),
+(10, 'pages', 'Pages', '{\"dated\": false, \"mount\": null, \"sites\": null, \"slugs\": true, \"inject\": [], \"layout\": null, \"routes\": [], \"sort_dir\": null, \"template\": null, \"propagate\": false, \"revisions\": false, \"structure\": null, \"sort_field\": null, \"taxonomies\": [], \"search_index\": null, \"title_formats\": [], \"default_status\": true, \"origin_behavior\": \"select\", \"preview_targets\": [{\"label\": \"Entry\", \"format\": \"{permalink}\", \"refresh\": true}], \"past_date_behavior\": \"public\", \"future_date_behavior\": \"private\"}', '2024-05-14 08:01:25', '2024-05-14 08:01:25');
 
 -- --------------------------------------------------------
 
@@ -128,6 +134,7 @@ INSERT INTO `collections` (`id`, `handle`, `title`, `settings`, `created_at`, `u
 -- Cấu trúc bảng cho bảng `entries`
 --
 
+DROP TABLE IF EXISTS `entries`;
 CREATE TABLE `entries` (
   `id` bigint UNSIGNED NOT NULL,
   `site` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -151,6 +158,7 @@ CREATE TABLE `entries` (
 -- Cấu trúc bảng cho bảng `failed_jobs`
 --
 
+DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
   `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -167,6 +175,7 @@ CREATE TABLE `failed_jobs` (
 -- Cấu trúc bảng cho bảng `fieldsets`
 --
 
+DROP TABLE IF EXISTS `fieldsets`;
 CREATE TABLE `fieldsets` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -181,6 +190,7 @@ CREATE TABLE `fieldsets` (
 -- Cấu trúc bảng cho bảng `forms`
 --
 
+DROP TABLE IF EXISTS `forms`;
 CREATE TABLE `forms` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -196,6 +206,7 @@ CREATE TABLE `forms` (
 -- Cấu trúc bảng cho bảng `form_submissions`
 --
 
+DROP TABLE IF EXISTS `form_submissions`;
 CREATE TABLE `form_submissions` (
   `id` bigint UNSIGNED NOT NULL,
   `form_id` bigint UNSIGNED NOT NULL,
@@ -210,6 +221,7 @@ CREATE TABLE `form_submissions` (
 -- Cấu trúc bảng cho bảng `global_sets`
 --
 
+DROP TABLE IF EXISTS `global_sets`;
 CREATE TABLE `global_sets` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -225,6 +237,7 @@ CREATE TABLE `global_sets` (
 -- Cấu trúc bảng cho bảng `global_set_variables`
 --
 
+DROP TABLE IF EXISTS `global_set_variables`;
 CREATE TABLE `global_set_variables` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -241,6 +254,7 @@ CREATE TABLE `global_set_variables` (
 -- Cấu trúc bảng cho bảng `group_user`
 --
 
+DROP TABLE IF EXISTS `group_user`;
 CREATE TABLE `group_user` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
@@ -253,6 +267,7 @@ CREATE TABLE `group_user` (
 -- Cấu trúc bảng cho bảng `migrations`
 --
 
+DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -291,6 +306,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Cấu trúc bảng cho bảng `navigations`
 --
 
+DROP TABLE IF EXISTS `navigations`;
 CREATE TABLE `navigations` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -306,6 +322,7 @@ CREATE TABLE `navigations` (
 -- Cấu trúc bảng cho bảng `password_activation_tokens`
 --
 
+DROP TABLE IF EXISTS `password_activation_tokens`;
 CREATE TABLE `password_activation_tokens` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -318,6 +335,7 @@ CREATE TABLE `password_activation_tokens` (
 -- Cấu trúc bảng cho bảng `password_reset_tokens`
 --
 
+DROP TABLE IF EXISTS `password_reset_tokens`;
 CREATE TABLE `password_reset_tokens` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -330,6 +348,7 @@ CREATE TABLE `password_reset_tokens` (
 -- Cấu trúc bảng cho bảng `personal_access_tokens`
 --
 
+DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
   `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -349,6 +368,7 @@ CREATE TABLE `personal_access_tokens` (
 -- Cấu trúc bảng cho bảng `revisions`
 --
 
+DROP TABLE IF EXISTS `revisions`;
 CREATE TABLE `revisions` (
   `id` bigint UNSIGNED NOT NULL,
   `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -366,6 +386,7 @@ CREATE TABLE `revisions` (
 -- Cấu trúc bảng cho bảng `role_user`
 --
 
+DROP TABLE IF EXISTS `role_user`;
 CREATE TABLE `role_user` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
@@ -378,6 +399,7 @@ CREATE TABLE `role_user` (
 -- Cấu trúc bảng cho bảng `taxonomies`
 --
 
+DROP TABLE IF EXISTS `taxonomies`;
 CREATE TABLE `taxonomies` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -394,6 +416,7 @@ CREATE TABLE `taxonomies` (
 -- Cấu trúc bảng cho bảng `taxonomy_terms`
 --
 
+DROP TABLE IF EXISTS `taxonomy_terms`;
 CREATE TABLE `taxonomy_terms` (
   `id` bigint UNSIGNED NOT NULL,
   `site` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -411,6 +434,7 @@ CREATE TABLE `taxonomy_terms` (
 -- Cấu trúc bảng cho bảng `trees`
 --
 
+DROP TABLE IF EXISTS `trees`;
 CREATE TABLE `trees` (
   `id` bigint UNSIGNED NOT NULL,
   `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -428,6 +452,7 @@ CREATE TABLE `trees` (
 -- Cấu trúc bảng cho bảng `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -652,13 +677,13 @@ ALTER TABLE `asset_containers`
 -- AUTO_INCREMENT cho bảng `blueprints`
 --
 ALTER TABLE `blueprints`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `collections`
 --
 ALTER TABLE `collections`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `entries`

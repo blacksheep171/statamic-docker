@@ -62,9 +62,13 @@ Generate new key for project
 php artisan key:generate
 ```
 
-Create migration and migrate
+Install **eloquent-driver** composer packages and create migration
 ```sh
+composer require statamic/eloquent-driver:3.4.1
 php please auth:migration
+php artisan vendor:publish --tag="statamic-eloquent-config"
+php artisan vendor:publish --provider="Statamic\Eloquent\ServiceProvider" --tag=migrations
+php artisan vendor:publish --tag="statamic-eloquent-entries-table"
 php artisan migrate
 ```
 

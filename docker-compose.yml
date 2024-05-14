@@ -45,7 +45,7 @@ services:
      - "3360:3006"
     volumes:
      - ./mysql:/var/lib/mysql
-     - "./backups/init:/docker-entrypoint-initdb.d"
+     - "./backups/data.sql:/docker-entrypoint-initdb.d/data.sql"
     networks:
      - terrace
   elasticsearch:
