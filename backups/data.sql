@@ -468,14 +468,6 @@ CREATE TABLE `users` (
   `last_login` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `super`, `avatar`, `preferences`, `last_login`) VALUES
-(1, 'Admin2', 'admin2@gmail.com', NULL, '$2y$10$BhdvTylng/oGl.g5FZRM5e/CYFr7uIl6vSiAVqiwK5AfxUPEEBwga', 'ydQ8yw4fLNWeoYwuLnOtcIyi9UCmaEy1mbAmdU0IGbiS86ixFB3wRAW3hlZo', '2024-05-14 01:50:16', '2024-05-14 01:50:16', 1, NULL, NULL, '2024-05-14 01:52:31');
-
---
 -- Chỉ mục cho các bảng đã đổ
 --
 
