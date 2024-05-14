@@ -42,18 +42,15 @@ REDIS_PASSWORD=null
 REDIS_PORT=6379
 ```
 
-
 To build and run the containers for application
 ```sh
 docker-compose up -d
 ```
 
-
 Access container
 ```sh
 docker-compose exec php bash
 ```
-
 
 Install dependencies via composer
 ```sh
@@ -63,6 +60,12 @@ composer install
 Generate new key for project
 ```sh
 php artisan key:generate
+```
+
+Create migration and migrate
+```sh
+php please auth:migration
+php artisan migrate
 ```
 
 Access host

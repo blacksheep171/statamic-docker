@@ -20,4 +20,4 @@ yarn-error.log
 /.idea
 /.vscode
 /mysql
-redis/data
+/redis/data
